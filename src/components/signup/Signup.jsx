@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import Autocomplete from "react-google-autocomplete";
 
 async function postData({name,email, phone, address, password, coord}) {
-    
+    console.log('going')
     const result = await axios({ method:'post', url:`${process.env.REACT_APP_BASE_URL}/auth/register`, data:{ name, email, phoneNumber:phone, lat:coord.lat, long:coord.lng, address, password}})
     // window.location.reload()
     console.log(result)
@@ -13,7 +13,8 @@ async function postData({name,email, phone, address, password, coord}) {
   }
 
 export const Signup = ({show, setShow}) => {
-    const [apiKey, setAPiKey] = useState(process.env.GOOGLE_API_KEY)
+    console.log(process.env.REACT_APP_GOOGLE_API_KEY, 'key' , process.env.REACT_APP_BASE_URL, 'LOP', process.env.REACT_APP_HELLO)
+    const [apiKey, setAPiKey] = useState(process.env.REACT_APP_GOOGLE_API_KEY)
     const history = useNavigate()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -41,7 +42,7 @@ export const Signup = ({show, setShow}) => {
             const result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
                 params:{
                     address,
-                    key: process.env.GOOGLE_API_KEY
+                    key: 'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'
                 }
             })
             let coordinate = result.data.results[0].geometry.location
@@ -64,7 +65,7 @@ export const Signup = ({show, setShow}) => {
                 <input className="input" placeholder="Email" email value={email} onChange={(e)=>{setEmail(e.target.value); setError(false)}}/>
                 <input className="input" placeholder="Phone number" value={phone} onChange={(e)=>{setPhone(e.target.value); setError(false)}}/>
                 {/* <input className="input" placeholder="Address" value={address} onChange={(e)=>{setAddress(e.target.value); setError(false)}}/> */}
-                <Autocomplete className="input" placeholder="Address" apiKey={apiKey} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
+                <Autocomplete className="input" placeholder="Address" apiKey={'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
                 <input className="input" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value); setError(false)}}/>
                 
                 <input className="input submit" type='submit' onClick={addNewCar} />

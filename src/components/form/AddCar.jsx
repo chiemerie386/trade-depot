@@ -47,7 +47,7 @@ export const AddCar = ({show, setShow}) => {
             const result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
                 params:{
                     address,
-                    key: process.env.GOOGLE_API_KEY
+                    key:'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'
                 }
             })
             let coordinate = result.data.results[0].geometry.location

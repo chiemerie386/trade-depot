@@ -48,7 +48,7 @@ export const Login = ({show, setShow, set}) => {
             <h2>LOGIN</h2>
                 {error && (<h4 style={{color:'red'}}>Invalid Login Credentials</h4>)}
                 <input className="input" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-                <input className="input" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                <input className="input" type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                 
                 <input className="input submit" type='submit' onClick={addNewCar} />
             </div>

@@ -42,7 +42,7 @@ export const Signup = ({show, setShow}) => {
             const result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
                 params:{
                     address,
-                    key: 'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'
+                    key: process.env.REACT_APP_GOOGLE_API_KEY
                 }
             })
             let coordinate = result.data.results[0].geometry.location
@@ -65,7 +65,7 @@ export const Signup = ({show, setShow}) => {
                 <input className="input" placeholder="Email" email value={email} onChange={(e)=>{setEmail(e.target.value); setError(false)}}/>
                 <input className="input" placeholder="Phone number" value={phone} onChange={(e)=>{setPhone(e.target.value); setError(false)}}/>
                 {/* <input className="input" placeholder="Address" value={address} onChange={(e)=>{setAddress(e.target.value); setError(false)}}/> */}
-                <Autocomplete className="input" placeholder="Address" apiKey={'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
+                <Autocomplete className="input" placeholder="Address" apiKey={apiKey} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
                 <input className="input" type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value); setError(false)}}/>
                 
                 <input className="input submit" type='submit' onClick={addNewCar} />

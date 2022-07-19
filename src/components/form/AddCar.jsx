@@ -21,6 +21,7 @@ async function postData({image, name, radius, address, price, coord}) {
   }
 
 export const AddCar = ({show, setShow}) => {
+    const [apiKey, setAPiKey] = useState(process.env.REACT_APP_GOOGLE_API_KEY)
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [price, setPrice] = useState('')
@@ -47,7 +48,7 @@ export const AddCar = ({show, setShow}) => {
             const result = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
                 params:{
                     address,
-                    key:'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'
+                    key: process.env.REACT_APP_GOOGLE_API_KEY
                 }
             })
             let coordinate = result.data.results[0].geometry.location
@@ -65,7 +66,7 @@ export const AddCar = ({show, setShow}) => {
             <div className="addcar-form">
                 <input className="input" placeholder="Name" value={name} onChange={(e)=>{setName(e.target.value)}}/>
                 <input className="input" placeholder="Radius" value={radius} onChange={(e)=>{setRadius(e.target.value)}}/>
-                <Autocomplete className="input" placeholder="Address" apiKey={"AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE"} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
+                <Autocomplete className="input" placeholder="Address" apiKey={apiKey} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
                 <input className="input" placeholder="Price" value={price} onChange={(e)=>{setPrice(e.target.value)}}/>
                 
                 <input className="input" onChange={fileSelected} type="file" accept="image/*" placeholder="image" />

@@ -66,7 +66,7 @@ export const Signup = ({show, setShow}) => {
                 <input className="input" placeholder="Phone number" value={phone} onChange={(e)=>{setPhone(e.target.value); setError(false)}}/>
                 {/* <input className="input" placeholder="Address" value={address} onChange={(e)=>{setAddress(e.target.value); setError(false)}}/> */}
                 <Autocomplete className="input" placeholder="Address" apiKey={'AIzaSyBECBHU9SXsCdXosa_zBCkBa1Tdx8nztCE'} onPlaceSelected={(place) => getCoordinate(place.formatted_address)} />
-                <input className="input" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value); setError(false)}}/>
+                <input className="input" type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value); setError(false)}}/>
                 
                 <input className="input submit" type='submit' onClick={addNewCar} />
             </div>

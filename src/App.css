@@ -1,0 +1,14 @@
+
+
+.add-car{
+  position: fixed;
+  bottom: 7%;
+  right: 3%;
+  padding: 10px;
+  border-radius: 10%;
+  font-size: 15px;
+  background-color: #232628;
+  color: #CC622B;
+  font-weight: 600;
+  cursor: pointer;
+}
